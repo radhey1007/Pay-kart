@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>login</ion-title>   
+  </ion-toolbar>
+</ion-header>
+<ion-content color="secondary" padding>
+    <form class="form" [formGroup]="angForm">
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col >           
+            <ion-item>
+              <ion-label position="floating" >Email</ion-label>
+              <ion-input type="text" formControlName="email" #email ></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.email">
+                <div class="error-message" *ngIf="angForm.get('email').hasError(validation.type) && (angForm.get('email').dirty || angForm.get('email').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>           
+          </ion-col>
+          </ion-row>
+          <ion-row>
+          <ion-col >                
+            <ion-item>
+              <ion-label position="floating" >Password</ion-label>
+              <ion-input type="text" formControlName="password" #password ></ion-input>
+            </ion-item>
+                <div class="validation-errors">
+                    <ng-container *ngFor="let validation of validation_messages.password">
+                      <div class="error-message" *ngIf="angForm.get('password').hasError(validation.type) && (angForm.get('password').dirty || angForm.get('password').touched)">
+                        <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                      </div>
+                    </ng-container>
+                  </div>  
+            </ion-col>
+        </ion-row> 
+      </ion-grid>
+      <ion-row>
+        <ion-col>
+        <ion-button button color="assertive" class="submit-btn" round expand="block" [disabled]="!angForm.valid" (click)="login(angForm.value)"> LOGIN  </ion-button>
+        </ion-col>
+        <ion-col>
+          <p class="go-to-register" class="submit-btn">
+            No account yet? <a color="secondary" (click)="goToRegisterPage()">Create an account.</a>
+          </p>
+          <p class="go-to-register" class="submit-btn">
+            <a color="secondary" (click)="goToDashboradPage()">Dashboard.</a>
+          </p>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-content>
+  <ion-footer class="login-footer" >
+    <ion-toolbar color="dark">
+      <ion-title> <a href="javascript:void(0)"><span class="rightHelp"><ion-icon name="help-circle"></ion-icon></span></a></ion-title>
+    </ion-toolbar>
+  </ion-footer>
