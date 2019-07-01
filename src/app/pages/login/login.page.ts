@@ -53,8 +53,9 @@ export class LoginPage implements OnInit {
   }
 
   login = (form) => {
-    alert(form);
+    //alert(form);
     console.table(form);
+    this.goToDashboradPage();
   }
 
   ngOnInit() {
@@ -68,6 +69,10 @@ export class LoginPage implements OnInit {
 
   goToDashboradPage = () => {
     this.router.navigateByUrl('/dashboard');
+  }
+
+  goToForgotPasswordPage = () => {
+    this.router.navigateByUrl('/forgot');
   }
 
 }

@@ -19,9 +19,6 @@ export class RegistrationPage implements OnInit {
      'Female',
      'Others' ,
   ];
-
-  
-
   constructor(public router:Router,public formBuilder:FormBuilder,public modalCtrl: ModalController) {
 
     this.createForm();
@@ -38,20 +35,19 @@ export class RegistrationPage implements OnInit {
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      password: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(6),
-        Validators.maxLength(6)
-      ])),
+      ])),     
+      gender:new FormControl('',Validators.required),   
+      dob:new FormControl('',Validators.required),     
       mobile: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern('^[0-9]'),
         Validators.minLength(10),
         Validators.maxLength(10)
       ])),
-      gender:new FormControl('',Validators.required),
-      dob:new FormControl('',Validators.required)  
+      password: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(10)
+      ]))
     });
 
    }
@@ -72,27 +68,27 @@ export class RegistrationPage implements OnInit {
         { type: 'required', message: 'Email is required.' },
         { type: 'pattern', message: 'Please enter a valid email.' }
       ],
-      'password': [
-        { type: 'required', message: 'Password is required.' },
-        { type: 'minlength', message: 'Password must be at least 5 characters long.' },
-        { type: 'maxlength', message: 'Password must be at less than or equal to 10 characters long.' }
+      'gender': [
+        { type: 'required', message: 'Please select your gender.' }
+      ],
+      'dob': [
+        { type: 'required', message: 'Please select your D.O.B.' }
       ],
       'mobile': [
         { type: 'required', message: 'Mobile is required.' },
         { type: 'minlength', message: 'Mobile num must be 10 digit.' },
         { type: 'maxlength', message: 'Mobile num must be 10 digit.' }
       ],
-      'gender': [
-        { type: 'required', message: 'Please select your gender.' }
-      ],
-      'dob': [
-        { type: 'required', message: 'Please select your D.O.B.' }
-      ]
-
+      'password': [
+        { type: 'required', message: 'Password is required.' },
+        { type: 'minlength', message: 'Password must be at least 5 characters long.' },
+        { type: 'maxlength', message: 'Password must be at less than or equal to 10 characters long.' }
+      ]  
     }
   }
 
-  submit = (form) => {
+  register = (form) => {
+    alert('test')
     console.table(form)
   }
 

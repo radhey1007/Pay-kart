@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ScrollDetail } from '@ionic/core';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,15 @@ import { ScrollDetail } from '@ionic/core';
 })
 export class HomePage {
   showToolbar = false;
-  onScroll($event: CustomEvent<ScrollDetail>) {
-    if ($event && $event.detail && $event.detail.scrollTop) {
-      const scrollTop = $event.detail.scrollTop;
-      this.showToolbar = scrollTop >= 225;
-    }
+  
+  constructor(public router: Router,public navCtrl:NavController) {
+  }
+
+goToRegisterPage = () => {
+  this.router.navigateByUrl('/registration');
+}
+
+goToLoginPage = () => {
+  this.router.navigateByUrl('/login');
 }
 }

@@ -37,17 +37,44 @@
             </ion-col>
         </ion-row> 
       </ion-grid>
+
+      <ion-row>
+        <ion-col col-9></ion-col>
+        <ion-col><p class="go-to-login"><a (click)="goToForgotPasswordPage()">Forgot Password</a></p></ion-col>
+      </ion-row>
       <ion-row>
         <ion-col>
-        <ion-button button color="assertive" class="submit-btn" round expand="block" [disabled]="!angForm.valid" (click)="login(angForm.value)"> LOGIN  </ion-button>
+          <ion-button button color="dark" (click)="login(angForm.value)" expand="block"  [disabled]="!angForm.valid" fill="outline">
+            LOGIN
+            <ion-icon slot="end" name="create"></ion-icon>
+          </ion-button>
         </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-5>
+          <ion-button color="dark" (click)="fbLogin()"  fill="outline">
+            Facebook
+            <ion-icon slot="end" name="create"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col col-2>
+        </ion-col>
+        <ion-col col-5>
+          <ion-button color="danger" (click)="googleLogin()" fill="outline">
+            Google
+            <ion-icon slot="end" name="create"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+     
+      </ion-row>
+      <ion-row>
         <ion-col>
-          <p class="go-to-register" class="submit-btn">
-            No account yet? <a color="secondary" (click)="goToRegisterPage()">Create an account.</a>
-          </p>
-          <p class="go-to-register" class="submit-btn">
-            <a color="secondary" (click)="goToDashboradPage()">Dashboard.</a>
-          </p>
+          <ion-button button color="dark" class="submit-btn" (click)="goToRegisterPage()" expand="block" fill="outline">
+            Create an account
+            <ion-icon slot="end" name="create"></ion-icon>
+          </ion-button>
         </ion-col>
       </ion-row>
     </form>
